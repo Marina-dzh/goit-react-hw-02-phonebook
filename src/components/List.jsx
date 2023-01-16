@@ -1,7 +1,7 @@
 import { Filter } from "./Filter"
 import { List, Item, Number, Button } from "./List.styled"
 import PropTypes from 'prop-types';
-import { number } from "yup/lib/locale";
+
 
 export const ContactList = ({ contacts,changeFilter,filter, deleteContact } ) => {
    
