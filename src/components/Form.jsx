@@ -10,11 +10,10 @@ const schema = yup.object().shape({
 
 })
 
-export const ContactForm = ({onSubmit}) => {
+export const ContactForm = ({addContact}) => {
     const  handleSubmit = (values, {resetForm}) => {
-    //     console.log(values)
         console.log(values)
-onSubmit(values)
+addContact(values)
         resetForm()
         
     }

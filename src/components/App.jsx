@@ -16,7 +16,9 @@ export class App extends Component {
   number: ''
   }
   
-  addContact = (name,number) => {
+  addContact = ({ name, number }) => {
+    console.log(name,number)
+    
     this.setState(pState => ({
       contacts: [...pState.contacts, { name, id:nanoid(), number  }]
     }));
@@ -40,7 +42,7 @@ export class App extends Component {
     const visibleContact = this.state.contacts.filter(contact=>contact.name.toLowerCase().includes(normFilter))
     return (
      <>
-      <ContactForm onSubmit={this.addContact}/>
+      <ContactForm addContact={this.addContact}/>
       <ContactList contacts={visibleContact} filter={this.state.filter} changeFilter={ this.changeFilter} deleteContact={this.deleteContact} />
         </>
     )
