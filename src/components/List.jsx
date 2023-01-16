@@ -1,27 +1,48 @@
 import { Filter } from "./Filter"
+import { List, Item, Number, Button } from "./List.styled"
+import PropTypes from 'prop-types';
+import { number } from "yup/lib/locale";
+
 export const ContactList = ({ contacts,changeFilter,filter, deleteContact } ) => {
    
     return (
         <>
-            <h2>Contacts</h2>
             <Filter changeFilter={changeFilter} filter={filter} />
-        <ul>
+        <List>
             {contacts.map(contact => (
                 <ContactItem key={contact.id} contact={contact} deleteContact={ deleteContact} />
     
             ))}
-        </ul></>
+        </List></>
     )
 }
 
 const ContactItem = ({ contact:{name, number, id}, deleteContact}) => {
     
     return (
-        <>
-            <div>{name }</div>
-            <div>{number}</div>
-            <button type="button" onClick={ ()=>deleteContact(id)}>Delete</button>
-        </>
+        <Item>
+            <div>
+                <div>{name}</div>
+                <Number>{number}</Number>
+            </div>
+            <Button type="button" onClick={ ()=>deleteContact(id)}>Delete</Button>
+        </Item>
         
     )
+   
+}
+
+ContactItem.propTypes = {
+    contact: PropTypes.exact({
+        name: PropTypes.string,
+        number: PropTypes.string,
+        id: PropTypes.string
+    }),
+    deleteContact:PropTypes.func,
+    
+}
+ Filter.propTypes = {
+     changeFilter: PropTypes.func,
+     filter: PropTypes.string
+    
 }

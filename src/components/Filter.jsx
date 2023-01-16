@@ -1,8 +1,10 @@
-export const Filter = ({changeFilter,filter}) => {
+
+import { Input, Text } from "./Filter.styled"
+export const Filter = ({ changeFilter, filter }) => {
     return (
        <>
-            <div>Find contacts by name</div>
-            <input type="text" onChange={ changeFilter} value={filter} />
+            <Text>Find contacts by name</Text>
+            <Input type="text" onChange={ changeFilter} value={filter} />
             
         </>     
     )
